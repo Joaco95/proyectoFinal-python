@@ -10,7 +10,7 @@
     </form>
 
 
-    <h3>Historial de Reseñas:</h3>
+    <h3>Historial de Reseñas</h3>
     {% if message_list %}
         <table class="message_list">
             <thead>
@@ -33,7 +33,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>Para ver las ultimas reseñas, <a href="{% url 'reseñas' %}">Click acá</a>.</p>
+        <p> Para ver las ultimas reseñas, <a href="{% url 'reseñas/historial' %}">click acá</a>.</p>
     {% endif %}
 
 
