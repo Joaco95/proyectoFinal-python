@@ -1,0 +1,16 @@
+{% extends "AppCoder/layout.html" %} {% block title %} Usuarios {% endblock %}
+{% block content %}
+<p>
+  PROYECTO FINAL CODERHOUSE - GRUPO 2 - Jeremías Ruiz / Jesús Lacruz Andrade /
+  Joaquín Alonso
+</p>
+<h1>Usuarios Registrados</h1>
+<form action="{% url 'buscar' %}" method="GET">
+  <input type="email" placeholder="email" name="Email" />
+  <input type="submit" value="Buscar" />
+</form>
+<br />
+<br />
+<br />
+{% for users in usuarios %} {{users}} <br />
+{% endfor%} {% endblock %}

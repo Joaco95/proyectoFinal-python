@@ -1,0 +1,39 @@
+{% extends "AppCoder/layout.html" %} {% block title %} Registro {% endblock %}
+{% block content %}
+<p>
+  PROYECTO FINAL CODERHOUSE - GRUPO 2 - Jeremías Ruiz / Jesús Lacruz Andrade /
+  Joaquín Alonso
+</p>
+<main class="container mt-5">
+  <h1 class="tituloPrincipal">Registro</h1>
+  {% if formularioRegistro.errors %}
+  <div style="color: brown">{{formularioRegistro.errors}}</div>
+  {% endif%}
+  <form action="/registro/" method="POST">
+    {% csrf_token %}
+    <!-- Formulario en Html comentado -->
+    <!--  <div>
+      <h3 class="titulosRegistros">Nombre:</h3>
+      <input type="text" placeholder="name" name="Nombre" />
+    </div>
+    <div>
+      <h3 class="titulosRegistros">Email:</h3>
+      <input type="email" placeholder="email" name="Email" />
+    </div>
+    <div>
+      <h3 class="titulosRegistros">Fecha de nacimiento:</h3>
+      <input type="date" placeholder="date" name="FechaDeNacimiento" />
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Enviar Formulario" /> -->
+
+    <!-- Formulario forms.py -->
+
+    <table>
+      {{formularioRegistro.as_table}}
+    </table>
+    <input type="submit" name="ENVIAR" />
+  </form>
+</main>
+{% endblock %}

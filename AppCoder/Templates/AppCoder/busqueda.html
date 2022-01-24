@@ -1,0 +1,12 @@
+{% extends "AppCoder/layout.html" %} {% block title %} Busqueda {% endblock %}
+{% block content %}
+<p>Estamos buscando: {{email}}</p>
+{% if registro %}
+<ul>
+  {% for user in registro %}
+  <li>{{user.nombreRegis}}</li>
+
+  <li>{{user.emailRegis}}</li>
+  {%endfor%}
+</ul>
+{% endif%} {% endblock %}
