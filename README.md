@@ -1,3 +1,14 @@
+Jesus Lacruz Andrade
+- Cree la carpeta y el nombre del proyecto usando django-admin startproject.
+- Cree la aplicacion usando python manage.py startapp.
+- Genere el Repositorio y lo subi a GITHUB.
+- Genere el html Padre (Layout)
+- Trabaje en la pestaña Reseñas
+- Agregue un formulario, con una funcion que registre la fecha, la hora y el mensaje de cada entrada.
+(http://127.0.0.1:8000/reseñas/)
+- Agregue un historial con las ultimas entradas registradas.
+
+
 Joaquin Alonso
 -Agrege Model registro
 -Cree registro.html , usuarios.html,busqueda.html
