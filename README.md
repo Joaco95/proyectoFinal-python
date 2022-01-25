@@ -16,3 +16,8 @@ Joaquin Alonso
 -En views.py agregue funcion registro,usuario y busquedaDeUsuarios
 -Agregue en forms.py funcion RegistroForm
 (Si hay cambios en el archivo models usar comando (python manage.py makemigrations) y luego (python manage.py migrate) sigo en runserver va a tirar error)
+
+Jeremías Ruiz
+- Creé la view de contacto en view.py
+- Creé el formulario de contacto de forms.py
+- Creé el template contacto.html
