@@ -1,7 +1,22 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Contacto {% endblock %}
 {% block content %}
-<p>
-  PROYECTO FINAL CODERHOUSE - GRUPO 2 - Jeremías Ruiz / Jesús Lacruz Andrade /
-  Joaquín Alonso
-</p>
+  {% if contact_form.errors %}
+
+    <p style="color:red">{{ contact_form.errors }}</p>
+
+  {% endif %}
+  <form action="{% url 'contacto' %}" method="post">
+    {% csrf_token %}
+
+    <table>
+      {{ contact_form.as_table  }}
+    </table>
+
+    <input type="submit" value="Enviar">
+    
+  </form>
+
+  <p>
+    {{success_message}}
+  </p>
 {% endblock %}

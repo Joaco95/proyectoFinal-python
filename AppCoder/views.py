@@ -1,7 +1,7 @@
 
 
 from datetime import datetime
-from tkinter.tix import Form
+# from tkinter.tix import Form
 from django.shortcuts import render,redirect
 
 from django.http import HttpResponse
@@ -11,7 +11,7 @@ from django.shortcuts import redirect
 from AppCoder.forms import reseñasForm
 from AppCoder.models import reseñas
 
-from AppCoder.forms import RegistroForm
+from AppCoder.forms import RegistroForm, ContactForm
 from AppCoder.models import reseñas,Registro
 
 
@@ -68,10 +68,19 @@ def busquedaUsuarios(request):
 
 ###############################################################################################################
 
-
+########## JEREMIAS ##############
 def contacto(request):
-    return render(request, "AppCoder/contacto.html")
-    
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        person_name = request.POST['nombre']
+        success_message = f'Gracias por comunicarte con nosotros {person_name}. Te responderemos a la brevedad vía email.'
+        if contact_form.is_valid():
+            contact_form.cleaned_data
+            return render(request, 'AppCoder/contacto.html', {'contact_form':ContactForm,'success_message':success_message, 'person_name': person_name})
+    else:
+            return render(request, 'AppCoder/contacto.html', {'contact_form':ContactForm})
+        
+
 def discos(request):
     return render(request, "AppCoder/discos.html")
 

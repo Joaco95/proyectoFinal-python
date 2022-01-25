@@ -28,6 +28,14 @@ class reseñasForm(forms.ModelForm):
         fields = ("mensaje",)   # NOTE: the trailing comma is required
         
         
+### ContactForm por Jeremías
+class ContactForm(Form):
+  nombre = CharField()
+  email = EmailField()
+  asunto = CharField()
+  mensaje = CharField()
+  
+        
 
 
     
