@@ -57,3 +57,10 @@ td {
   margin: auto;
   padding: auto;
 }
+
+.p-Discos {
+  text-align: center;
+  font-size: 50px;
+  background-color: red;
+  color: white;
+}
