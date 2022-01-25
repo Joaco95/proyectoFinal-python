@@ -21,7 +21,7 @@ def inicio(request):
 #######################################################################################################
 ##ATENCION##
 ##VIEW DE JOAQUIN
-##VIEW para utilizar con forms.py (no funciona),la funcion de abajo si funciona
+##VIEW para utilizar con forms.py
 
 
 def registro(request):
@@ -35,6 +35,7 @@ def registro(request):
         formularioRegistro=RegistroForm()
     return render(request, "AppCoder/registro.html",{'formularioRegistro':formularioRegistro})
 #########################################################################################################
+###View para utilizar con html
 """ def registro(request):
     if request.method == 'POST':
         Nombre=request.POST['Nombre']
@@ -51,19 +52,14 @@ def registro(request):
 def Usuarios(request):
     return render(request, "AppCoder/usuarios.html",{'usuarios':Registro.objects.all()})
     
-#def busquedaUsuarios(request):
-#    busqueda=f"Usuario es: {request.GET['Nombre']}"
-#    return HttpResponse(busqueda)
 
 def busquedaUsuarios(request):
     if request.GET["Email"]:
         email=request.GET["Email"]
-        #registro=Registro.objects.filter(emailRegis__icontains=email)
         registro=Registro.objects.filter(emailRegis=email)
         return render(request,"Appcoder/busqueda.html", {"registro":registro,"email":email})
 
-    #busqueda=f"Usuario es: {request.GET['Email']}"
-    #return HttpResponse(busqueda)
+
 
 
 ###############################################################################################################

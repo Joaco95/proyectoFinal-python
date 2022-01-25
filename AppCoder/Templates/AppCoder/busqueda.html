@@ -1,12 +1,15 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Busqueda {% endblock %}
 {% block content %}
+<button>
+  <a href="{% url 'registro' %}">VOLVER</a>
+</button>
 <p>Estamos buscando: {{email}}</p>
 {% if registro %}
 <ul>
   {% for user in registro %}
-  <li>{{user.nombreRegis}}</li>
-
-  <li>{{user.emailRegis}}</li>
+  <li class="busqueda">
+    NOMBRE DE USUARIO: {{user.nombreRegis}}-- EMAIL: {{user.emailRegis}}
+  </li>
   {%endfor%}
 </ul>
 {% endif%} {% endblock %}
