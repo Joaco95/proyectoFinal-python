@@ -19,7 +19,6 @@ from AppCoder.models import reseñas,Registro
 def inicio(request):
     return render(request, "AppCoder/inicio.html")
 #######################################################################################################
-##ATENCION##
 ##VIEW DE JOAQUIN
 ##VIEW para utilizar con forms.py
 
@@ -50,7 +49,8 @@ def registro(request):
 
 ###############################################################################################################
 def Usuarios(request):
-    return render(request, "AppCoder/usuarios.html",{'usuarios':Registro.objects.all()})
+    return render(request, "AppCoder/usuarios.html")
+    #return render(request, "AppCoder/usuarios.html",{'usuarios':Registro.objects.all()})
     
 
 def busquedaUsuarios(request):

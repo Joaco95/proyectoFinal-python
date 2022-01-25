@@ -14,7 +14,7 @@ Joaquin Alonso
 - Agrege Model registro
 - Cree registro.html , usuarios.html,busqueda.html
 - Agregue urls.py url de usuarios,buscar
-- En views.py agregue funcion registro,usuario y busquedaDeUsuarios
+- En views.py agregue funcion registro, usuario y busquedaDeUsuarios
 - Agregue en forms.py funcion RegistroForm
 
 Jeremías Ruiz
@@ -22,3 +22,8 @@ Jeremías Ruiz
 - Creé la view de contacto en view.py
 - Creé el formulario de contacto de forms.py
 - Creé el template contacto.html
+
+admin
+
+- username: TripleJ
+- pass:123456
