@@ -95,7 +95,7 @@ def reseñas(request):
             message = form.save(commit=False)
             message.fecha = datetime.now()
             message.save()
-            return redirect("reseñas")
+            return redirect("reseñas/historial")
     else:
         return render(request, "AppCoder/reseñas.html", {"form": form})
 

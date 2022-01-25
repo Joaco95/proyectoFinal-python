@@ -23,9 +23,10 @@ urlpatterns = [
     
     path("contacto/", views.contacto, name="contacto"),
     
+    path("reseñas/historial", reseñas_list_view, name="reseñas/historial"),
+    
     path("reseñas/", views.reseñas, name="reseñas"),
     
-    path("reseñas/historial", reseñas_list_view, name="reseñas"),
     
     path("discos/", views.discos, name="discos"),
     
