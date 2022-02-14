@@ -38,4 +38,10 @@ class Registro(models.Model):
                     Fecha de naciemiento:  ({self.fechaDeNacimientoRegis})-
                     Bienvenido  {self.nombreRegis}"""
 
+class Post(models.Model):
+    title=models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    body = models.TextField()
     
+    def __str__(self):
+        return self.title + ' | ' + str(self.author)

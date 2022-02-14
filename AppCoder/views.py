@@ -5,7 +5,7 @@ from datetime import datetime
 from django.shortcuts import render,redirect
 
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from django.shortcuts import redirect
 from AppCoder.forms import reseñasForm
@@ -106,5 +106,7 @@ class reseñasListView(ListView):
  
 
 ###############################################################################################################
-  
- 
+
+    
+def post(request):
+    return render(request, "AppCoder/post.html")
