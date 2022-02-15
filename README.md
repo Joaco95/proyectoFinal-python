@@ -32,6 +32,8 @@ Jeremías Ruiz
 - Creé el formulario de contacto de forms.py
 - Creé el template contacto.html
 - Creé CRUD para posts
+- Agregué ckeditor
+- Hice el seteo inicial de Bootstrap
 
 
 
