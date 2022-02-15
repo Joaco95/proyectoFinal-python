@@ -2,11 +2,11 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
-
 from django.db.models.fields import (
     BooleanField, CharField, DateField, EmailField, IntegerField,
     GenericIPAddressField, URLField, DecimalField, TimeField
 )
+from ckeditor.fields import RichTextField
 
 ''' class reseñas(models.Model):
     Mensaje = models.CharField(max_length=300)
@@ -39,7 +39,8 @@ class Registro(models.Model):
 class Post(models.Model):
     title=models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True)
+    # body = models.TextField()
     
     def __str__(self):
         return self.title + ' | ' + str(self.author)

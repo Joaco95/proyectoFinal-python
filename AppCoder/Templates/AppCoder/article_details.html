@@ -6,7 +6,7 @@ Joaquín Alonso
 </p>
 <main class="container mt-5">
     <h1>{{ post.title }}</h1>
-    <p>{{ post.body }}</p>
+    <p>{{ post.body |safe }}</p>
 </main>
 {% endblock %}
 

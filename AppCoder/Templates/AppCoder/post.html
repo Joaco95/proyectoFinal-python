@@ -11,7 +11,15 @@ Joaquín Alonso
             <h4><a href="{% url 'article-detail' post.pk  %}">{{post.title}} - {{post.author}}</a></h4>
             <a href="{% url 'edit-post' post.pk  %}">Editar</a> - <a href="{% url 'delete-post' post.pk   %}">Borrar</a>
         </span>
-        <p>{{post.body}}</p>
+        <div>
+            <p>
+            {% if post.body|length > 500 %}
+                {{post.body|slice:500|safe}}...
+            {% else  %}
+                {{post.body |safe}}
+            {% endif %}
+            </p>
+        </div>
     
     {% endfor %}
 
