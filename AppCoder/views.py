@@ -1,18 +1,15 @@
 
 
 from datetime import datetime
-# from tkinter.tix import Form
 from django.shortcuts import render,redirect
-
 from django.http import HttpResponse
-from django.views.generic import ListView, TemplateView
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from AppCoder.forms import reseñasForm
-from AppCoder.models import reseñas
 
-from AppCoder.forms import RegistroForm, ContactForm
-from AppCoder.models import reseñas,Registro
+from AppCoder.forms import RegistroForm, ContactForm, PostForm, PostEditForm
+from AppCoder.models import reseñas,Registro, Post
 
 
 
@@ -108,5 +105,29 @@ class reseñasListView(ListView):
 ###############################################################################################################
 
     
-def post(request):
-    return render(request, "AppCoder/post.html")
+# def post(request):
+#     return render(request, "AppCoder/post.html")
+
+class PostView(ListView):
+    model = Post
+    template_name = "AppCoder/post.html"
+    
+class ArticleDetailView(DetailView):
+    model = Post
+    template_name = "AppCoder/article_details.html"
+    
+class AddPostView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = "AppCoder/add_post.html"
+    
+class UpdatePostView(UpdateView):
+    model = Post
+    template_name = "AppCoder/edit_post.html"
+    form_class = PostEditForm
+    
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = "AppCoder/delete_post.html"
+    success_url = reverse_lazy('post')
+    

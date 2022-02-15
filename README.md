@@ -1,3 +1,12 @@
+admin
+
+- username: TripleJ
+- pass:123456
+
+- username: TripleJ
+- pass:admin123
+
+
 Jesus Lacruz Andrade
 
 - Cree la carpeta y el nombre del proyecto usando django-admin startproject.
@@ -22,8 +31,7 @@ Jeremías Ruiz
 - Creé la view de contacto en view.py
 - Creé el formulario de contacto de forms.py
 - Creé el template contacto.html
+- Creé CRUD para posts
 
-admin
 
-- username: TripleJ
-- pass:123456
+

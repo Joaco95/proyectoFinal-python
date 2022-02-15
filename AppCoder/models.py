@@ -1,9 +1,7 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.db.models import Model
 from django.utils import timezone
-
-from django.utils import timezone
+from django.urls import reverse
 
 from django.db.models.fields import (
     BooleanField, CharField, DateField, EmailField, IntegerField,
@@ -14,7 +12,7 @@ from django.db.models.fields import (
     Mensaje = models.CharField(max_length=300)
     Email = models.EmailField(max_length=300)
     Fecha = models.DateTimeField("date logged") 
-     '''
+'''
     
 ###Lo hizo Jesus
 class reseñas(models.Model):
@@ -45,3 +43,6 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title + ' | ' + str(self.author)
+    
+    def get_absolute_url(self):
+        return reverse('article-detail', args=(str(self.id)))
