@@ -1,0 +1,20 @@
+{% extends "AppCoder/layout.html" %} {% block title %} Login {% endblock %}
+{% block content %}
+
+
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            {{form.as_p}}
+    
+            <button type="submit"> Iniciar Sesion</button>
+    
+        </form>
+        
+        <script src="" async defer></script>
+        
+        <script src="" async defer></script>
+ 
+
+{% endblock %}
+

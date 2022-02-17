@@ -16,6 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from ProyectoFinal.views import login_request
+from ProyectoFinal.views import signup
+from ProyectoFinal import views
+from django.contrib.auth.views import LogoutView
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -23,6 +27,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("", include("AppCoder.urls")),
     path('admin/', admin.site.urls),
+    #JESUS 15/02
+    path('login', login_request, name = 'login'),  
+    #JESUS 16/02 
+    path('login', views.login_request, name= 'login'),
+    path('signup', views.signup, name= 'signup'),
+    path('logout', LogoutView.as_view(template_name='AppCoder/logout.html'), name= 'logout'),
 ]
 
 
