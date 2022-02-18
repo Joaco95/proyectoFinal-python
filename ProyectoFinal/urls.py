@@ -16,8 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from ProyectoFinal.views import login_request
-from ProyectoFinal.views import signup
+from ProyectoFinal.views import login_request, signup, logout_user
 from ProyectoFinal import views
 from django.contrib.auth.views import LogoutView
 
@@ -32,7 +31,8 @@ urlpatterns = [
     #JESUS 16/02 
     path('login', views.login_request, name= 'login'),
     path('signup', views.signup, name= 'signup'),
-    path('logout', LogoutView.as_view(template_name='AppCoder/logout.html'), name= 'logout'),
+    #JEREMIAS
+    path('logout', views.logout_user, name= 'logout'),
 ]
 
 

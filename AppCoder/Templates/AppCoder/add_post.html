@@ -2,16 +2,28 @@
 {% block content %}
 
 <main class="container mt-5">
-    <h1 class="tituloPrincipal">Nuevo post</h1>
-    
-    <div class="form-group my-5">
-        <form method="POST">
-            {% csrf_token %}
-            {{form.media}}
-            {{form.as_p}}
-            <button class="btn btn-dark">Post</button>
-        </form>
-    </div>    
+    {% if user.is_authenticated %}
+
+        <h1 class="tituloPrincipal">Nuevo post</h1>
+        
+        <div class="form-group my-5">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.media}}
+                {{form.as_p}}
+                <button class="btn btn-dark">Post</button>
+            </form>
+        </div>
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("user").value
+                = name
+
+        </script>
+
+    {% else %}
+        <p>No estás autorizado a esta sección</p>
+    {% endif%}    
 
 </main>
 {% endblock %}

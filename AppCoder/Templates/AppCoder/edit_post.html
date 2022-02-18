@@ -1,19 +1,25 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Edite el post {{post.pk}}{% endblock %}
 {% block content %}
-<p>
 
-</p>
-<main class="container mt-5">
-    <h1 class="tituloPrincipal">Edite el post {{post.pk}} - {{post.title}}</h1>
-    
-    <div class="form-group my-5">
-        <form method="POST">
-            {% csrf_token %}
-            {{form.media}}
-            {{form.as_p}}
-            <button class="btn btn-dark">Actualizar</button>
-        </form>
-    </div>    
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <main class="container mt-5">
+                <h1 class="tituloPrincipal">Edite el post {{post.pk}} - {{post.title}}</h1>
+                
+                <div class="form-group my-5">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form.media}}
+                        {{form.as_p}}
+                        <button class="btn btn-dark">Actualizar</button>
+                    </form>
+                </div>    
+            </main>
+        {% else %}
+            <main class="container mt-5">
+                <p>No estás autorizado a esta sección</p>
+            </main>
+        {% endif %}
+    {% endif %}
 
-</main>
 {% endblock %}

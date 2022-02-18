@@ -1,18 +1,21 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Elimine el post {{post.pk}}{% endblock %}
 {% block content %}
-<p>
-PROYECTO FINAL CODERHOUSE - GRUPO 2 - Jeremías Ruiz / Jesús Lacruz Andrade /
-Joaquín Alonso
-</p>
+
+
 <main class="container my-5">
-    <h1 class="tituloPrincipal">¿Desea eliminar el post {{post.pk}} - {{post.title}} definitivamente?</h1>
-    
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            <button class="btn btn-dark">Borrar definitivamente</button>
-        </form>
-    </div>    
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <h1 class="tituloPrincipal">¿Desea eliminar el post {{post.pk}} - {{post.title}} definitivamente?</h1>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-dark">Borrar definitivamente</button>
+                </form>
+            </div>
+        {% else%}
+            <p>No estás autorizado a esta sección</p>
+        {% endif%}
+    {% endif%}
 
 </main>
 {% endblock %}

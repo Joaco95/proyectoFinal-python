@@ -35,5 +35,9 @@ Jeremías Ruiz
 - Agregué ckeditor
 - Hice el seteo inicial de Bootstrap
 
+- Agregué los redirects de Logout/Login
+- Personalicé los navs de acuerdo a si está logueado o no
+- Restringí el CRUD a cada instancia de User
+
 
 
