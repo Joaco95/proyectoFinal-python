@@ -10,7 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
-from AppCoder.forms import  ContactForm, PostForm, PostEditForm,EditarPerfil
+from AppCoder.forms import  PostForm, PostEditForm,EditarPerfil
 from AppCoder.models import  Post,ImagenDePerfil
 
 ##Nuevas Imports
@@ -69,7 +69,7 @@ def perfilEdit(request):
         formulario = EditarPerfil(request.POST)
         if formulario.is_valid():
             data = formulario.cleaned_data
-            profile.first_name = data['first_name'] 
+            profile.username = data['username'] 
             profile.email = data['email']
             profile.set_password(data['password1'])
             profile.save()
