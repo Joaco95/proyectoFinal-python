@@ -58,6 +58,6 @@ def signup(request):
 def logout_user(request):
     logout(request)
     messages.success(request, ('Has cerrado sesión'))
-    return redirect('inicio')
+    return redirect('post')
 
 

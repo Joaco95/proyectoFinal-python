@@ -1,0 +1,15 @@
+{% extends "AppCoder/layout.html" %} {% block title %} Perfil {% endblock %}
+{%block content %}
+<h1>Usuario: {{user.username}}</h1>
+<img src="{{url}}" height="40px" />
+<br />
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+
+  <input type="submit" value="Editar" />
+</form>
+
+{% endblock %}

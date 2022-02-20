@@ -1,9 +1,11 @@
 
 import email
-from django.forms import Form, CharField, IntegerField, EmailField,DateField
+from django.forms import Form, CharField, IntegerField, EmailField,DateField, PasswordInput
 from django import forms
 from AppCoder.models import  Post
-        
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
         
 ### Jeremías
 class ContactForm(Form):
@@ -38,6 +40,15 @@ class PostEditForm(forms.ModelForm):
     }
   
         
+class EditarPerfil(UserCreationForm):
+    username = CharField()
+    email = EmailField()
+    password1 = CharField(label='Contraseña', widget=PasswordInput)
+    password2 = CharField(label='Repetir Contraseña', widget=PasswordInput)
 
+    class Meta:
+        model = User
+        fields = [ 'username','email', 'password1', 'password2']
+        help_texts = {k:'' for k in fields}
 
     
