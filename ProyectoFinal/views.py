@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from ProyectoFinal.forms import RegistroDeUsuarios
 
 
 #JESUS 15/02
@@ -40,7 +41,7 @@ def login_request(request):
 def signup(request):
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistroDeUsuarios(request.POST)
         
         if form.is_valid():
         
@@ -49,7 +50,7 @@ def signup(request):
             return redirect('login')
 
     else:
-        form = UserCreationForm()
+        form = RegistroDeUsuarios()
     return render(request, "signup.html", {"form":form})
 
 #Jeremías: actualicé los render para que dirijan a las páginas que correponden. 18/02

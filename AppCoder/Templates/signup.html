@@ -1,17 +1,11 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Signup {% endblock %}
-{% block content %}
+{%block content %}
 
+<div class="container">
+  <form action="" method="POST">
+    {% csrf_token %} {{form.as_p}}
 
-        <form action="" method="POST">
-            {% csrf_token %}
-    
-            {{form.as_p}}
-    
-            <button type="submit"> Registrate </button>
-    
-        </form>
-        
- 
-
+    <button type="submit">Registrate</button>
+  </form>
+</div>
 {% endblock %}
-

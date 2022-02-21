@@ -3,6 +3,7 @@
 from datetime import datetime
 from importlib.metadata import requires
 import profile
+from pyexpat import model
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView 
@@ -19,14 +20,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
-def inicio(request):
-    imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
-    return render(request, "AppCoder/inicio.html",{"url":imagenes[0].imagen.url})
 
+def inicio(request):
+    return render(request, "AppCoder/inicio.html")
+
+
+@login_required
 def miPerfil(request):
-    imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
-    return render(request, "AppCoder/miProfile.html",{"url":imagenes[0].imagen.url})
+    if request.method == 'POST':
+        imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
+        return render(request, "AppCoder/miProfile.html",{"url":imagenes[0].imagen.url})
+    else:
+        return render(request, "AppCoder/miProfile.html")
 ###############################################################################################################
 
     
@@ -69,6 +74,11 @@ class EditProfile(UpdateView):
     template_name = "AppCoder/imageProfile.html"
     form_class = EditarDescripcion   
 
+class EliminarUsuario(DeleteView):
+    model= User
+    success_url = reverse_lazy('post')
+
+
 
 @login_required
 def perfilEdit(request):
@@ -87,16 +97,3 @@ def perfilEdit(request):
     
     return render(request, 'AppCoder/profile.html', {'form': editar})
 
-""" @login_required
-def agregarImagen(request):
-    if request.method == 'POST':
-        formulario = AvatarFormulario(request.POST, request.FILES)
-
-        if formulario.is_valid():
-            avatar = Avatar(user=request.user, imagen=formulario.cleaned_data['imagen'])
-            avatar.save()
-            return redirect('inicio')
-    else:
-        formulario = AvatarFormulario()
-
-    return render(request, 'AppCoder/crear_avatar.html', {'form': formulario}) """

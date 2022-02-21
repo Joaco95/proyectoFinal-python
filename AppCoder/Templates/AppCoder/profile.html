@@ -1,19 +1,16 @@
 {% extends "AppCoder/layout.html" %} {% block title %}EditarPerfil{% endblock %}
 {%block content %} {% if user.is_authenticated %}
-<h1>Usuario: {{user.username}}</h1>
-<h1>Email: {{user.email}}</h1>
-<h1>password: {{user.password}}</h1>
-<h1>staff: {{user.is_staff}}</h1>
-<h1>name: {{user.first_name}}</h1>
-<h1>name2: {{user.date_joined}}</h1>
-<br />
 
-<form action="" method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
+<div class="container">
+  <h1 class="m-5 text-center">Usuario: {{user.username}}</h1>
 
-  <input type="submit" value="Editar" />
-</form>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Editar" />
+  </form>
+</div>
 {% endif %} {% endblock %}
