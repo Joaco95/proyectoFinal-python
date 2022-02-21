@@ -10,8 +10,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
-from AppCoder.forms import  PostForm, PostEditForm,EditarPerfil
-from AppCoder.models import  Post,ImagenDePerfil
+from AppCoder.forms import  PostForm, PostEditForm,EditarPerfil,EditarDescripcion
+from AppCoder.models import  Post,ImagenDePerfil,Perfiles
 
 ##Nuevas Imports
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,6 +24,9 @@ def inicio(request):
     imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
     return render(request, "AppCoder/inicio.html",{"url":imagenes[0].imagen.url})
 
+def miPerfil(request):
+    imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
+    return render(request, "AppCoder/miProfile.html",{"url":imagenes[0].imagen.url})
 ###############################################################################################################
 
     
@@ -61,20 +64,39 @@ class UserProfile(LoginRequiredMixin, ListView):
     template_name = 'AppCoder/profile.html'
     context_object_name = 'profile'
     
+class EditProfile(UpdateView):
+    model = Perfiles
+    template_name = "AppCoder/imageProfile.html"
+    form_class = EditarDescripcion   
+
+
 @login_required
 def perfilEdit(request):
     profile = request.user
-
     if request.method == 'POST':
-        formulario = EditarPerfil(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        editar = EditarPerfil(request.POST)
+        if editar.is_valid():
+            data = editar.cleaned_data
             profile.username = data['username'] 
             profile.email = data['email']
             profile.set_password(data['password1'])
             profile.save()
             return redirect('post')
     else:
-        formulario = EditarPerfil({'email': profile.email})
+        editar = EditarPerfil({'email': profile.email})
     
-    return render(request, 'AppCoder/profile.html', {'form': formulario})
+    return render(request, 'AppCoder/profile.html', {'form': editar})
+
+""" @login_required
+def agregarImagen(request):
+    if request.method == 'POST':
+        formulario = AvatarFormulario(request.POST, request.FILES)
+
+        if formulario.is_valid():
+            avatar = Avatar(user=request.user, imagen=formulario.cleaned_data['imagen'])
+            avatar.save()
+            return redirect('inicio')
+    else:
+        formulario = AvatarFormulario()
+
+    return render(request, 'AppCoder/crear_avatar.html', {'form': formulario}) """

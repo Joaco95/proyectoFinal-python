@@ -1,0 +1,18 @@
+{% extends "AppCoder/layout.html" %} {% block title %}MiPerfil{% endblock %}
+{%block content %}
+<h1>Mi Perfil</h1>
+<h2>Link: {{user.perfiles.link}}</h2>
+<h2>Descripcion:{{user.perfiles.descripcion}}</h2>
+<h2>Descripcion:{{user.perfiles.image}}</h2>
+<img src="{{user.imagendeperfiles.Imagen.url}}" alt="" />
+<img src="{{url}}" height="100px" />
+{% comment %}
+<!-- <a class="btn btn-dark" href="{% url 'imageProfile' profile.pk  %}"
+  >Editar Imagen</a
+> -->
+{% endcomment %}
+<h1>Nombre de usuario: {{user.username}}</h1>
+<h1>Email: {{user.email}}</h1>
+{% if user.is_authenticated %}
+<a class="btn btn-dark" href="{% url 'profile'  %}">Editar</a>
+{% endif %} {% endblock %}

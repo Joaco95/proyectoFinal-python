@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from pyexpat import model
 from unittest.util import _MAX_LENGTH
 from django.db import models
@@ -28,18 +29,21 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('article-detail', args=(str(self.id)))
 
-class PerfilUsuario(models.Model):
-    nombre = models.CharField(max_length=255)
-    image = models.ImageField()
-    descripcion = models.TextField()
-    link = models.TextField()
-    email = models.EmailField()
 
-
-        
+###Imagenes    
 class ImagenDePerfil(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     imagen = ImageField(upload_to='imagenes', null=True, blank=True)
     
+    def __str__(self):
+        return str(self.user)
     
+class Perfiles(models.Model):
+    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+    descripcion=models.TextField()
+    link=models.CharField(max_length=255)
+    image=models.ImageField(null=True,blank=True,upload_to='image/')
+    
+    def __str__(self):
+        return str(self.user)
     

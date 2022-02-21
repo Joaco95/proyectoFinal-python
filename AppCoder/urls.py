@@ -1,6 +1,6 @@
 from django.urls import path
 from AppCoder import views
-from AppCoder.views import PostView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView
+from AppCoder.views import PostView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView,EditProfile
 
 urlpatterns = [
     path("", views.inicio, name="inicio"),
@@ -15,7 +15,11 @@ urlpatterns = [
     
     path("article/<int:pk>/delete/", DeletePostView.as_view(), name="delete-post"),
     
-    path("profile/",views.perfilEdit,name="profile"),
+    path("miprofile/",views.miPerfil,name="miProfile"),
+    
+    path("profile/",views.perfilEdit, name="profile"),
+    
+    path("imageProfile/<int:pk>",EditProfile.as_view(),name="imageProfile"),
     
     
 

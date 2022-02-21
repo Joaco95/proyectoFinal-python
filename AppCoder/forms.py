@@ -2,7 +2,7 @@
 import email
 from django.forms import Form, CharField, IntegerField, EmailField,DateField, PasswordInput
 from django import forms
-from AppCoder.models import  Post
+from AppCoder.models import  Post,Perfiles
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -52,3 +52,16 @@ class EditarPerfil(UserCreationForm):
         help_texts = {k:'' for k in fields}
 
     
+class EditarDescripcion(forms.ModelForm):
+  class Meta:
+    model= Perfiles
+    fields= ('descripcion', 'link', 'image')
+    
+    widgets = {
+      
+      'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
+      'link': forms.Textarea(attrs={'class': 'form-control'}),
+      
+      
+    }
+   

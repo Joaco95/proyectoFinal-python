@@ -1,33 +1,38 @@
 {% extends "AppCoder/layout.html" %} {% block title %} Post {% endblock %}
-{% block content %}
+{%block content %}
 
 <div>
-    <h1 class="tituloPrincipal">Todos los post</h1>
-    {% for post in object_list %}
-            <a class="text-decoration-none text-dark" href="{% url 'article-detail' post.pk  %}">
-                <h4>{{post.title}}</h4>
-                <p> - por {{post.author}}</p>
-            </a>
+  <h1 class="tituloPrincipal">Todos los post</h1>
+  {% for post in object_list %}
+  <a
+    class="text-decoration-none text-dark"
+    href="{% url 'article-detail' post.pk  %}"
+  >
+    <h4>{{post.title}}</h4>
+    <p>- por {{post.author}}</p>
+  </a>
 
-            {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                    <a class="text-decoration-none btn-sm btn-dark" href="{% url 'edit-post' post.pk  %}">Editar</a> - 
-                    <a class="text-decoration-none btn-sm btn-dark" href="{% url 'delete-post' post.pk   %}">Borrar</a>
-                {% endif %}
-            {% endif %}
-        <div>
-            <p>
-            {% if post.body|length > 500 %}
-                {{post.body|slice:500|safe}}...
-            {% else  %}
-                {{post.body |safe}}
-            {% endif %}
-            </p>
-        </div>
-    
-    {% endfor %}
+  {% if user.is_authenticated %} {% if user.id == post.author.id %}
+  <a
+    class="text-decoration-none btn-sm btn-dark"
+    href="{% url 'edit-post' post.pk  %}"
+    >Editar</a
+  >
+  -
+  <a
+    class="text-decoration-none btn-sm btn-dark"
+    href="{% url 'delete-post' post.pk   %}"
+    >Borrar</a
+  >
+  {% endif %} {% endif %}
+  <div>
+    <p>
+      {% if post.body|length > 500 %} {{post.body|slice:500|safe}}... {% else %}
+      {{post.body |safe}} {% endif %}
+    </p>
+  </div>
+
+  {% endfor %}
 </div>
-
-
 
 {% endblock %}

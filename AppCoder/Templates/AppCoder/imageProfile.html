@@ -1,0 +1,18 @@
+{% extends "AppCoder/layout.html" %} {% block title %}EditarImagen{% endblock %}
+{%block content %}
+
+<h1>prueba</h1>
+
+<form
+  action=""
+  method="POST"
+  enctype="multipart/form-data"
+  class="form-group my-5"
+>
+  {% csrf_token %}
+  <table>
+    {{form.media}} {{ form.as_table }}
+    <button class="btn btn-dark">Actualizar</button>
+  </table>
+</form>
+{% endblock %}
