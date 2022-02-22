@@ -36,15 +36,15 @@ class PostEditForm(forms.ModelForm):
   
         
 class EditarPerfil(UserCreationForm):
-    username = CharField()
+    
     first_name = CharField()
-    email = EmailField()
+   
     password1 = CharField(label='Contraseña', widget=PasswordInput)
     password2 = CharField(label='Repetir Contraseña', widget=PasswordInput)
 
     class Meta:
         model = User
-        fields = [ 'username','first_name','email', 'password1', 'password2']
+        fields = ['first_name', 'password1', 'password2']
         help_texts = {k:'' for k in fields}
 
     

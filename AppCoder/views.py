@@ -83,9 +83,9 @@ def editarContra(request):
         editar = EditarPerfil(request.POST)
         if editar.is_valid():
             data = editar.cleaned_data
-            profile.username = data['username'] 
+             
             profile.first_name = data['first_name'] 
-            profile.email = data['email']
+            
             profile.set_password(data['password1'])
             profile.save()
             return redirect('post')
@@ -119,3 +119,24 @@ def editarImagen(request):
         formulario = EditarImagen()
 
     return render(request, 'AppCoder/imagen.html', {'form': formulario})
+
+@login_required
+def editarDescripcion(request):
+
+    if request.method == 'GET':
+        usuarios = User.objects.filter()
+        avatares = Image.objects.filter(user=request.user.id)
+        formulario=EditarDescripcion(request.GET)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            Perfiles.objects.create(
+                descripcion=data['descripcion'],
+                link=data['link']
+                )
+            return redirect('miProfile')
+        else:
+            formulario = Perfiles()
+        return render(request, 'AppCoder/imageProfile.html' , {'form': formulario, 'usuarios': usuarios})
+    
+    
