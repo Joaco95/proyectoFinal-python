@@ -1,11 +1,7 @@
 admin
 
-- username: TripleJ
-- pass:123456
-
-- username: TripleJ
-- pass:admin123
-
+- username: triplej
+- pass:adminadmin
 
 Jesus Lacruz Andrade
 
@@ -20,11 +16,11 @@ Jesus Lacruz Andrade
 
 Joaquin Alonso
 
-- Agrege Model registro
-- Cree registro.html , usuarios.html,busqueda.html
-- Agregue urls.py url de usuarios,buscar
-- En views.py agregue funcion registro, usuario y busquedaDeUsuarios
-- Agregue en forms.py funcion RegistroForm
+-Creé las vistas de Perfil(url,template)
+-Creé las vistas de Editar contreseña(template,form)
+-Creé las vistas de imagen(template,url,views,form,model)
+-Creé las vistas de perfil-editarpefil-imagen
+-Creé las vistas de perfil-editarpefil-imagen
 
 Jeremías Ruiz
 
@@ -38,6 +34,3 @@ Jeremías Ruiz
 - Agregué los redirects de Logout/Login
 - Personalicé los navs de acuerdo a si está logueado o no
 - Restringí el CRUD a cada instancia de User
-
-
-
