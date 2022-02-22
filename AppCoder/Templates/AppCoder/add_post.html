@@ -7,7 +7,7 @@
         <h1 class="tituloPrincipal">Nuevo post</h1>
         
         <div class="form-group my-5">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form.media}}
                 {{form.as_p}}

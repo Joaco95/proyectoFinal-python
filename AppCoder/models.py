@@ -20,6 +20,7 @@ from django.db.models import Model, ForeignKey, CASCADE, ImageField
 
 class Post(models.Model):
     title=models.CharField(max_length=255)
+    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)

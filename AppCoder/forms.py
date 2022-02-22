@@ -8,16 +8,11 @@ from django.contrib.auth.forms import UserCreationForm
 
         
 ### Jeremías
-class ContactForm(Form):
-  nombre = CharField()
-  email = EmailField()
-  asunto = CharField()
-  mensaje = CharField()
   
 class PostForm(forms.ModelForm):
   class Meta:
     model= Post
-    fields= ('title', 'author', 'body',)
+    fields= ('title', 'author', 'body', 'header_image',)
     
     widgets = {
       

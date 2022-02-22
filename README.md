@@ -1,6 +1,6 @@
 admin
 
-- username: triplej
+- username: tripleJ
 - pass:adminadmin
 
 Jesus Lacruz Andrade
@@ -24,13 +24,12 @@ Joaquin Alonso
 
 Jeremías Ruiz
 
-- Creé la view de contacto en view.py
-- Creé el formulario de contacto de forms.py
-- Creé el template contacto.html
 - Creé CRUD para posts
-- Agregué ckeditor
+- Agregué ckeditor (rich text editor)
 - Hice el seteo inicial de Bootstrap
 
 - Agregué los redirects de Logout/Login
-- Personalicé los navs de acuerdo a si está logueado o no
-- Restringí el CRUD a cada instancia de User
+- Personalicé los navs de acuerdo a si está logueado o no (user.is_authoriced)
+- Restringí el CRUD a cada instancia de User (user.is_authoriced)
+
+- Agregué el ImageField al Post Model (entrada de blog)
