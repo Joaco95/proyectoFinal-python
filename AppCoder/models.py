@@ -13,8 +13,10 @@ from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
 
-##Imagen
+
+##Edicion de Perfil
 from django.db.models import Model, ForeignKey, CASCADE, ImageField
+
 
 class Post(models.Model):
     title=models.CharField(max_length=255)
@@ -31,7 +33,7 @@ class Post(models.Model):
 
 
 ###Imagenes    
-class ImagenDePerfil(Model):
+class Image(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     imagen = ImageField(upload_to='imagenes', null=True, blank=True)
     

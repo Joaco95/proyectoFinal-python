@@ -1,6 +1,7 @@
 
 
 from datetime import datetime
+from email.mime import image
 from importlib.metadata import requires
 import profile
 from pyexpat import model
@@ -11,8 +12,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
-from AppCoder.forms import  PostForm, PostEditForm,EditarPerfil,EditarDescripcion
-from AppCoder.models import  Post,ImagenDePerfil,Perfiles
+from AppCoder.forms import  PostForm, PostEditForm,EditarPerfil,EditarDescripcion,EditarImagen
+from AppCoder.models import  Post,Image,Perfiles
 
 ##Nuevas Imports
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,13 +26,7 @@ def inicio(request):
     return render(request, "AppCoder/inicio.html")
 
 
-@login_required
-def miPerfil(request):
-    if request.method == 'POST':
-        imagenes= ImagenDePerfil.objects.filter(user=request.user.id)
-        return render(request, "AppCoder/miProfile.html",{"url":imagenes[0].imagen.url})
-    else:
-        return render(request, "AppCoder/miProfile.html")
+
 ###############################################################################################################
 
     
@@ -62,7 +57,7 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('post')
     
     
-######Perfil
+######Perfil##################
 
 class UserProfile(LoginRequiredMixin, ListView):
     model= User
@@ -72,22 +67,24 @@ class UserProfile(LoginRequiredMixin, ListView):
 class EditProfile(UpdateView):
     model = Perfiles
     template_name = "AppCoder/imageProfile.html"
-    form_class = EditarDescripcion   
+    form_class = EditarDescripcion
+    success_url = reverse_lazy('miProfile')   
 
 class EliminarUsuario(DeleteView):
     model= User
+    template_name = "AppCoder/profile_confirm_delete.html"
     success_url = reverse_lazy('post')
 
 
-
 @login_required
-def perfilEdit(request):
+def editarContra(request):
     profile = request.user
     if request.method == 'POST':
         editar = EditarPerfil(request.POST)
         if editar.is_valid():
             data = editar.cleaned_data
             profile.username = data['username'] 
+            profile.first_name = data['first_name'] 
             profile.email = data['email']
             profile.set_password(data['password1'])
             profile.save()
@@ -95,5 +92,30 @@ def perfilEdit(request):
     else:
         editar = EditarPerfil({'email': profile.email})
     
-    return render(request, 'AppCoder/profile.html', {'form': editar})
+    return render(request, 'AppCoder/profile.html', {'usuarios': editar})
 
+
+@login_required
+def perfil(request):
+    usuarios = User.objects.filter()
+    avatares = Image.objects.filter(user=request.user.id)
+    if avatares:
+        avatar_url = avatares.last().imagen.url
+    else:
+        avatar_url = ''
+    return render(request, 'AppCoder/miProfile.html' , {'avatar_url': avatar_url, 'usuarios': usuarios})
+
+
+@login_required
+def editarImagen(request):
+    if request.method == 'POST':
+        formulario = EditarImagen(request.POST, request.FILES)
+
+        if formulario.is_valid():
+            avatar = Image(user=request.user, imagen=formulario.cleaned_data['imagen'])
+            avatar.save()
+            return redirect('inicio')
+    else:
+        formulario = EditarImagen()
+
+    return render(request, 'AppCoder/imagen.html', {'form': formulario})

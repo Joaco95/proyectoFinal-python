@@ -1,6 +1,6 @@
 
 import email
-from django.forms import Form, CharField, IntegerField, EmailField,DateField, PasswordInput
+from django.forms import Form, CharField, IntegerField, EmailField,DateField, PasswordInput,ImageField
 from django import forms
 from AppCoder.models import  Post,Perfiles
 from django.contrib.auth.models import User
@@ -42,13 +42,14 @@ class PostEditForm(forms.ModelForm):
         
 class EditarPerfil(UserCreationForm):
     username = CharField()
+    first_name = CharField()
     email = EmailField()
     password1 = CharField(label='Contraseña', widget=PasswordInput)
     password2 = CharField(label='Repetir Contraseña', widget=PasswordInput)
 
     class Meta:
         model = User
-        fields = [ 'username','email', 'password1', 'password2']
+        fields = [ 'username','first_name','email', 'password1', 'password2']
         help_texts = {k:'' for k in fields}
 
     
@@ -65,3 +66,5 @@ class EditarDescripcion(forms.ModelForm):
       
     }
    
+class EditarImagen(Form):
+    imagen = ImageField(required=True)

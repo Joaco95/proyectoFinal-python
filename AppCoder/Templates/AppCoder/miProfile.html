@@ -5,24 +5,32 @@
   <div class="row">
     <div class="align-self-center">
       <h1 class="text-center">Mi Perfil</h1>
-      <img src="{{url}}" height="100px" class="align-items-center m-5" />
+      <img src="{{avatar_url}}" height="100px" class="align-items-center m-5" />
+      <a class="btn btn-dark text-center m-5" href="{% url 'imagen' %}"
+        >Editar Imagen</a
+      >
       <h2 class="p-3">Nombre de usuario: {{user.username}}</h2>
+      <h2 class="p-3">Nombre: {{user.first_name}}</h2>
       <h2 class="p-3">Email: {{user.email}}</h2>
       <h3 class="p-3">Link: {{user.perfiles.link}}</h3>
       <h3 class="p-3">Descripcion:{{user.perfiles.descripcion}}</h3>
 
-      {% if user.is_authenticated %}
       <a class="btn btn-dark text-center m-5" href="{% url 'profile'  %}"
-        >Editar</a
+        >Editar contraseña</a
       >
-      {% for profile in object_list %}
+      <a
+        class="btn btn-dark text-center m-5"
+        href="{% url 'imageProfile' user.id %}"
+        >Editar Perfil
+      </a>
 
       <a
-        class="btn btn-dark text-center"
-        href="{% url 'deleteProfile' profile.pk %}"
-        >Borrar</a
+        class="btn btn-dark text-center m-5"
+        href="{% url 'deleteProfile' user.id %}"
+        >Borrar Perfil</a
       >
     </div>
   </div>
 </div>
-{% endfor %} {% endif %} {% endblock %}
+
+{% endblock %}

@@ -15,13 +15,15 @@ urlpatterns = [
     
     path("article/<int:pk>/delete/", DeletePostView.as_view(), name="delete-post"),
     
-    path("miprofile/",views.miPerfil,name="miProfile"),
+    path("miprofile/",views.perfil,name="miProfile"),
+
+    path("profile/",views.editarContra, name="profile"),
     
-    path("miprofile/delete/pk",EliminarUsuario.as_view(),name="deleteProfile"),
-    
-    path("profile/",views.perfilEdit, name="profile"),
-    
+    path("miprofile/delete/<pk>",EliminarUsuario.as_view(),name="deleteProfile"),
+
     path("imageProfile/<int:pk>",EditProfile.as_view(),name="imageProfile"),
+    
+    path("profileimage/",views.editarImagen,name="imagen"),
     
     
 
